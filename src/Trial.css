@@ -1,0 +1,89 @@
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #121826, #1f2635);
+  font-family: "Poppins", sans-serif;
+}
+
+.auth-box {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  text-align: center;
+  width: 350px;
+}
+
+.auth-box h2 {
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.auth-input {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+/* Focus effect */
+.auth-input:focus {
+  border-color: #4dabf7;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 10px rgba(77, 171, 247, 0.4);
+}
+
+/* Hover effect */
+.auth-input:hover {
+  border-color: #66d9ef;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Button */
+.auth-btn {
+  background: #4dabf7;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.auth-btn:hover {
+  background: #339af0;
+  transform: scale(1.03);
+}
+
+/* Redirect */
+.redirect-text {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.redirect-link {
+  color: #4dabf7;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.redirect-link:hover {
+  color: #82cfff;
+}

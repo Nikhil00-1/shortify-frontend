@@ -1,0 +1,232 @@
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* --- Navbar Base Layout (Desktop/Mobile Row) --- */
+.navbar {
+  display: flex;
+  align-items: center;
+  /* Always maintain space-between for Logo (left) and Icons (right) */
+  justify-content: space-between; 
+  padding: 14px 32px;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  width: 100vw; /* Use 100% instead of 100vw to avoid potential scroll issues */
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+/* --- Left (Logo and Desktop Links) --- */
+.nav-left {
+  display: flex;
+  align-items: center;
+  /* Adjusted gap for better desktop spacing */
+  gap: 80px; 
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #38bdf8;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex; /* Default: Row for desktop */
+  gap: 28px;
+  list-style: none;
+  /* Ensure links have a position context for mobile transition */
+  position: static; 
+}
+
+.nav-links li {
+  cursor: pointer;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.nav-links li:hover {
+  color: #38bdf8;
+  transform: scale(1.05);
+}
+
+/* --- Right (Menu + Profile) --- */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.menu-icon {
+  display: none; /* Hidden on desktop */
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.menu-icon:hover {
+  transform: scale(1.1);
+}
+
+.profile {
+  position: relative;
+}
+
+.profile img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid #38bdf8;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.profile img:hover {
+  transform: scale(1.08);
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  width:125px;
+  background: rgba(30, 41, 59, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: fadeIn 0.25s ease-in-out;
+  z-index: 9999;
+}
+
+.dropdown button {
+  background: none;
+  border: none;
+  color: #e5e7eb;
+  padding: 12px 18px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dropdown button:hover {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+}
+
+/* --- Responsive Layout (Mobile) --- */
+@media (max-width: 900px) {
+  /* 1. Hide desktop links */
+  .nav-left .nav-links {
+    display: none; 
+  }
+  
+  /* 2. Show the menu icon */
+  .menu-icon {
+    display: block; 
+  }
+  
+  /* 3. The mobile menu overlay (Hidden by default) */
+  .nav-links {
+    /* Override desktop properties */
+    display: none; 
+    
+    /* Set the mobile overlay properties */
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background: rgba(15, 23, 42, 0.97);
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto; 
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+    /* FIX: High Z-index to cover content */
+    z-index: 999; 
+    
+    /* Reset nav-left on mobile so it only contains the logo */
+    /* NOTE: We're not using nav-left on mobile except for the logo row */
+  }
+  
+  /* 4. The OPEN mobile menu */
+  .nav-links.open {
+    display: flex; /* Show the menu */
+    height: auto; /* Let content define height */
+    padding: 18px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-links li {
+    margin: 10px 0;
+  }
+  
+  /* Ensure profile icon is visible on mobile if profile is logged in */
+  .profile {
+      display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 10px 20px;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  .profile img {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Login / Logout Button */
+.nav-btn {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  border: none;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+.nav-btn:hover {
+  background: linear-gradient(135deg, #1e40af, #1d4ed8);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.4);
+}
+
+.nav-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* Optional: Adjust button for smaller screens */
+@media (max-width: 600px) {
+  .nav-btn {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+  }
+}
