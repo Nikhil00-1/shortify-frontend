@@ -7,21 +7,30 @@ const MainPage = () => {
   const [shortUrl, setshortUrl] = useState("");
   const [copied, setCopied] = useState(false);
   const [message, setMessage] = useState();
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => seturl(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`${backendURL}/shortify`, {
-      method: "POST",
-      headers: { "content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ url }),
-    });
-    const short = await response.json();
-    setMessage(short.message);
-    setshortUrl(short.shorturl);
-    setCopied(false);
+    setLoading(true);
+    setshortUrl("");
+    setMessage("");
+    try {
+      const response = await fetch(`${backendURL}/shortify`, {
+        method: "POST",
+        headers: { "content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ url }),
+      });
+      const short = await response.json();
+      setMessage(short.message);
+      setshortUrl(short.shorturl);
+    } catch {
+      setMessage("Something went wrong!");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleCopy = () => {
@@ -63,8 +72,12 @@ const MainPage = () => {
               onChange={handleChange}
               required
             />
-            <button type="submit" className="submitBut">
-              Generate Link
+            <button
+              type="submit"
+              className="submitBut"
+              disabled={loading}
+            >
+              {loading ? <span className="loader"></span> : "Generate Link"}
             </button>
           </form>
 
