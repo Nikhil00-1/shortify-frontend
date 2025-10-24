@@ -13,7 +13,7 @@ const Login = ({setLogin}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${backendURL}}/user/login`, {
+      const response = await fetch(`${backendURL}/user/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
