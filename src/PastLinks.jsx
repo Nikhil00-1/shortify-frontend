@@ -58,7 +58,7 @@ const PastLinks = () => {
                     rel="noreferrer"
                     className="short"
                   >
-                    {item.shortUrl}
+                    {`https://shortify-ezjl.onrender.com/${item.shortUrl}`}
                   </a>
 
                   <p className="timestamp">Created: {createdDate}</p>
