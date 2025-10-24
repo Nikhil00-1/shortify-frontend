@@ -51,7 +51,6 @@ const PastLinks = () => {
                     <span className="link-number">{index + 1}. </span>
                     <span className="original">{item.url}</span>
                   </div>
-
                   <a
                     href={`https://shortify-ezjl.onrender.com/${item.shortUrl}`}
                     target="_blank"
