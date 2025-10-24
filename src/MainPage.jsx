@@ -12,7 +12,6 @@ const MainPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const response = await fetch(`${backendURL}/shortify`, {
       method: "POST",
       headers: { "content-Type": "application/json" },
@@ -20,12 +19,11 @@ const MainPage = () => {
       body: JSON.stringify({ url }),
     });
     const short = await response.json();
-    setMessage(short.message)
+    setMessage(short.message);
     setshortUrl(short.shorturl);
     setCopied(false);
   };
 
-  
   const handleCopy = () => {
     navigator.clipboard.writeText(shortUrl);
     setCopied(true);
@@ -35,7 +33,6 @@ const MainPage = () => {
   return (
     <div className="main-bg">
       <div className="main-layout">
-        {/* Left Section */}
         <div className="info-section">
           <div className="icon-circle">
             <img
@@ -46,7 +43,8 @@ const MainPage = () => {
           </div>
           <h1>SmartLink</h1>
           <p>
-            Transform long, messy URLs into short, professional links that are easy to share and manage.
+            Transform long, messy URLs into short, professional links that are
+            easy to share and manage.
           </p>
           <div className="feature-list">
             <span>🔗 Streamlined sharing</span>
@@ -55,7 +53,6 @@ const MainPage = () => {
           </div>
         </div>
 
-        {/* Right Section */}
         <div className="url-section">
           <form onSubmit={handleSubmit}>
             <input
@@ -78,39 +75,33 @@ const MainPage = () => {
                   href={shortUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="short-link">
+                  className="short-link"
+                >
                   {shortUrl}
                 </a>
                 <div className="btn-group">
                   <button
                     onClick={handleCopy}
-                    className={`copy-btn ${copied ? "copied" : ""}`}>
+                    className={`copy-btn ${copied ? "copied" : ""}`}
+                  >
                     {copied ? "Copied" : "Copy"}
                   </button>
-                  {/* <a
-                    href={shortUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="open-btn"
-                  >
-                    Open
-                  </a> */}
                 </div>
               </div>
             </div>
           )}
           {message && (
-                <div>
-                    <p className="response-msg error">
-                        {message}
-                    </p>
-                </div>
-            )}
+            <div>
+              <p className="response-msg error">{message}</p>
+            </div>
+          )}
         </div>
       </div>
 
       <footer className="footer">
-        <p><span className="highlight"></span> • Empowering Smarter Web Sharing</p>
+        <p>
+          <span className="highlight"></span> • Empowering Smarter Web Sharing
+        </p>
       </footer>
     </div>
   );

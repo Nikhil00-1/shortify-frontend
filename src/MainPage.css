@@ -1,3 +1,14 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 .main-bg {
   min-height: 100vh;
   background: radial-gradient(circle at top left, #0e1117, #1c1f26);
@@ -7,20 +18,27 @@
   color: #e5e7eb;
   font-family: "Poppins", "Inter", sans-serif;
   padding: 40px 60px;
+  overflow-x: hidden;
+  align-items: center;
 }
 
 .main-layout {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 60px;
   flex-wrap: wrap;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .info-section {
   flex: 1;
   animation: fadeLeft 1.2s ease-in-out;
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .icon-circle {
@@ -71,6 +89,8 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(12px);
   animation: fadeRight 1.2s ease-in-out;
+  width: 100%;
+  max-width: 500px;
 }
 
 .inputField {
@@ -143,8 +163,7 @@
   flex-wrap: wrap;
 }
 
-.copy-btn,
-.open-btn {
+.copy-btn {
   padding: 8px 14px;
   border-radius: 8px;
   border: none;
@@ -152,27 +171,18 @@
   font-weight: 500;
   transition: all 0.3s ease;
   font-size: 0.9rem;
-}
-
-.copy-btn {
   background: rgba(255, 255, 255, 0.08);
   color: #d1d5db;
 }
+
 .copy-btn:hover {
   background: rgba(59, 130, 246, 0.2);
   color: white;
 }
+
 .copy-btn.copied {
   background: rgba(16, 185, 129, 0.3);
   color: #34d399;
-}
-
-.open-btn {
-  background: rgba(59, 130, 246, 0.2);
-  color: #93c5fd;
-}
-.open-btn:hover {
-  background: rgba(59, 130, 246, 0.35);
 }
 
 .footer {
@@ -180,6 +190,7 @@
   margin-top: 40px;
   font-size: 14px;
   color: #9ca3af;
+  width: 100%;
 }
 
 .highlight {
@@ -198,7 +209,8 @@
 
 @media (max-width: 900px) {
   .main-bg {
-    padding: 30px 25px;
+    padding: 30px 20px;
+    align-items: center;
   }
   .main-layout {
     flex-direction: column;
@@ -207,6 +219,7 @@
   }
   .info-section {
     text-align: center;
+    align-items: center;
   }
   .info-section h1 {
     font-size: 2.2rem;
@@ -220,53 +233,25 @@
   }
   .url-section {
     width: 100%;
+    max-width: 400px;
     padding: 25px 20px;
-  }
-  .inputField {
-    font-size: 0.95rem;
-    padding: 13px;
-  }
-  .submitBut {
-    font-size: 0.95rem;
-    padding: 12px;
-  }
-  .result-box {
-    flex-direction: column;
-    gap: 12px;
-    align-items: stretch;
-    text-align: center;
-  }
-  .btn-group {
-    justify-content: center;
-    width: 100%;
   }
 }
 
 @media (max-width: 500px) {
   .main-bg {
     padding: 20px 15px;
-  }
-  .info-section h1 {
-    font-size: 1.8rem;
-  }
-  .info-section p {
-    font-size: 0.95rem;
+    align-items: center;
   }
   .url-section {
+    width: 100%;
     padding: 20px 15px;
     border-radius: 12px;
   }
-  .inputField {
-    font-size: 0.9rem;
-    padding: 12px;
-  }
-  .submitBut {
-    font-size: 0.9rem;
-    padding: 10px;
-  }
   .result-box {
+    text-align: center;
+    justify-content: center;
     gap: 10px;
-    padding: 12px 15px;
   }
   .short-link {
     font-size: 0.9rem;
@@ -278,21 +263,5 @@
   .footer {
     font-size: 12px;
     margin-top: 30px;
-  }
-}
-
-.info-section {
-  flex: 1;
-  animation: fadeLeft 1.2s ease-in-out;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-@media (max-width: 900px) {
-  .info-section {
-    text-align: center;
-    align-items: center;
   }
 }

@@ -53,7 +53,7 @@ const PastLinks = () => {
                   </div>
 
                   <a
-                    href={item.shortUrl}
+                    href={`https://shortify-ezjl.onrender.com/${item.shortUrl}`}
                     target="_blank"
                     rel="noreferrer"
                     className="short"
