@@ -22,14 +22,26 @@ const PastQrs = () => {
     getHistory();
   }, []);
 
-  const handleDownload = (url, filename) => {
+  const handleDownload = async (url, filename) => {
+  try {
+    const response = await fetch(url);
+    const blob = await response.blob(); // convert to binary
+    const blobUrl = window.URL.createObjectURL(blob); // temporary URL
+
     const link = document.createElement("a");
-    link.href = url;
+    link.href = blobUrl;
     link.download = filename || "qr-code.png";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-  };
+
+    // cleanup
+    window.URL.revokeObjectURL(blobUrl);
+  } catch (err) {
+    console.error("Error downloading QR:", err);
+  }
+};
+
 
   return (
     <div className="history-container">
