@@ -63,7 +63,7 @@ const Navbar = ({checkLogin,setLogin}) => {
   };
 
   return (
-    <nav className="navbar">
+    <nav className="navbar" style={{position:"sticky"}}>
       {/* Left Side: Logo + Links */}
       <div className="nav-left">
         <div className="logo">Shortify</div>
